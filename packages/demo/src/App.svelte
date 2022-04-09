@@ -3,6 +3,7 @@
   // import fortmaticModule from '@web3-onboard/fortmatic'
   // import gnosisModule from '@web3-onboard/gnosis'
   import injectedModule from '@web3-onboard/injected-wallets'
+<<<<<<< HEAD
   // import keepkeyModule from '@web3-onboard/keepkey'
   // import keystoneModule from '@web3-onboard/keystone'
   // import ledgerModule from '@web3-onboard/ledger'
@@ -12,6 +13,17 @@
   // import walletConnectModule from '@web3-onboard/walletconnect'
   // import walletLinkModule from '@web3-onboard/walletlink'
   // import magicModule from '@web3-onboard/magic'
+=======
+  import keepkeyModule from '@web3-onboard/keepkey'
+  import keystoneModule from '@web3-onboard/keystone'
+  import ledgerModule from '@web3-onboard/ledger'
+  import portisModule from '@web3-onboard/portis'
+  import torusModule from '@web3-onboard/torus'
+  import trezorModule from '@web3-onboard/trezor'
+  import walletConnectModule from '@web3-onboard/walletconnect'
+  import coinbaseModule from '@web3-onboard/coinbase'
+  import magicModule from '@web3-onboard/magic'
+>>>>>>> 614bf4214854fe416a6b50cf7a1e71d68957c6c8
   import { verifyMessage, verifyTypedData } from 'ethers/lib/utils'
   import { share } from 'rxjs/operators'
   // import VConsole from 'vconsole'
@@ -57,7 +69,11 @@
     }
   })
 
+<<<<<<< HEAD
   // const walletLink = walletLinkModule()
+=======
+  const coinbaseWallet = coinbaseModule()
+>>>>>>> 614bf4214854fe416a6b50cf7a1e71d68957c6c8
 
   // const walletConnect = walletConnectModule()
   // const portis = portisModule({
@@ -86,12 +102,21 @@
 
   const onboard = Onboard({
     wallets: [
+<<<<<<< HEAD
       // ledger,
       // trezor,
       // walletConnect,
       // keepkey,
       // keystone,
       // walletLink,
+=======
+      ledger,
+      trezor,
+      walletConnect,
+      keepkey,
+      keystone,
+      coinbaseWallet,
+>>>>>>> 614bf4214854fe416a6b50cf7a1e71d68957c6c8
       injected,
       // magic,
       // fortmatic,
@@ -103,32 +128,39 @@
       {
         id: '0x1',
         token: 'ETH',
-        label: 'Ethereum Mainnet',
+        label: 'Ethereum',
         rpcUrl: 'https://mainnet.infura.io/v3/ababf9851fd845d0a167825f97eeb12b'
       },
       {
         id: '0x3',
         token: 'tROP',
-        label: 'Ethereum Ropsten Testnet',
+        label: 'Ropsten',
         rpcUrl: 'https://ropsten.infura.io/v3/ababf9851fd845d0a167825f97eeb12b'
       },
       {
         id: '0x4',
         token: 'rETH',
-        label: 'Ethereum Rinkeby Testnet',
+        label: 'Rinkeby',
         rpcUrl: 'https://rinkeby.infura.io/v3/ababf9851fd845d0a167825f97eeb12b'
       },
       {
         id: '0x89',
         token: 'MATIC',
-        label: 'Matic Mainnet',
+        label: 'Polygon',
         rpcUrl: 'https://matic-mainnet.chainstacklabs.com'
       },
       {
+<<<<<<< HEAD
         id: '0x13881',
         token: 'MATIC',
         label: 'Mumbai Testnet',
         rpcUrl: 'https://rpc-mumbai.maticvigil.com'
+=======
+        id: '0xa',
+        token: 'OETH',
+        label: 'Optimism',
+        rpcUrl: 'https://mainnet.optimism.io'
+>>>>>>> 614bf4214854fe416a6b50cf7a1e71d68957c6c8
       }
     ],
     appMetadata: {
@@ -144,9 +176,17 @@
         version: '1.0.0',
         termsUrl: 'https://www.blocknative.com/terms-conditions',
         privacyUrl: 'https://www.blocknative.com/privacy-policy'
-      }
+      },
+      gettingStartedGuide: 'https://blocknative.com',
+      explore: 'https://blocknative.com'
     }
-    // example customising copy
+    // example customizing account center
+    // accountCenter: {
+    //   desktop: {
+    //     position: 'bottomRight'
+    //   }
+    // }
+    // example customizing copy
     // i18n: {
     //   en: {
     //     connect: {
