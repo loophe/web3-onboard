@@ -1,20 +1,20 @@
 <script>
   import Onboard from '@web3-onboard/core'
-  import fortmaticModule from '@web3-onboard/fortmatic'
-  import gnosisModule from '@web3-onboard/gnosis'
+  // import fortmaticModule from '@web3-onboard/fortmatic'
+  // import gnosisModule from '@web3-onboard/gnosis'
   import injectedModule from '@web3-onboard/injected-wallets'
-  import keepkeyModule from '@web3-onboard/keepkey'
-  import keystoneModule from '@web3-onboard/keystone'
-  import ledgerModule from '@web3-onboard/ledger'
-  import portisModule from '@web3-onboard/portis'
-  import torusModule from '@web3-onboard/torus'
-  import trezorModule from '@web3-onboard/trezor'
-  import walletConnectModule from '@web3-onboard/walletconnect'
-  import walletLinkModule from '@web3-onboard/walletlink'
-  import magicModule from '@web3-onboard/magic'
+  // import keepkeyModule from '@web3-onboard/keepkey'
+  // import keystoneModule from '@web3-onboard/keystone'
+  // import ledgerModule from '@web3-onboard/ledger'
+  // import portisModule from '@web3-onboard/portis'
+  // import torusModule from '@web3-onboard/torus'
+  // import trezorModule from '@web3-onboard/trezor'
+  // import walletConnectModule from '@web3-onboard/walletconnect'
+  // import walletLinkModule from '@web3-onboard/walletlink'
+  // import magicModule from '@web3-onboard/magic'
   import { verifyMessage, verifyTypedData } from 'ethers/lib/utils'
   import { share } from 'rxjs/operators'
-  import VConsole from 'vconsole'
+  // import VConsole from 'vconsole'
   import blocknativeIcon from './blocknative-icon'
   import blocknativeLogo from './blocknative-logo'
 
@@ -24,9 +24,9 @@
       .map(c => c.charCodeAt(0).toString(16).padStart(2, '0'))
       .join('')
 
-  if (window.innerWidth < 700) {
-    new VConsole()
-  }
+  // if (window.innerWidth < 700) {
+  //   new VConsole()
+  // }
 
   let defaultTransactionObject = JSON.stringify(
     {
@@ -57,47 +57,47 @@
     }
   })
 
-  const walletLink = walletLinkModule()
+  // const walletLink = walletLinkModule()
 
-  const walletConnect = walletConnectModule()
-  const portis = portisModule({
-    apiKey: 'b2b7586f-2b1e-4c30-a7fb-c2d1533b153b'
-  })
+  // const walletConnect = walletConnectModule()
+  // const portis = portisModule({
+  //   apiKey: 'b2b7586f-2b1e-4c30-a7fb-c2d1533b153b'
+  // })
 
-  const fortmatic = fortmaticModule({
-    apiKey: 'pk_test_886ADCAB855632AA'
-  })
+  // const fortmatic = fortmaticModule({
+  //   apiKey: 'pk_test_886ADCAB855632AA'
+  // })
 
-  const torus = torusModule()
-  const ledger = ledgerModule()
-  const keepkey = keepkeyModule()
-  const keystone = keystoneModule()
-  const gnosis = gnosisModule()
+  // const torus = torusModule()
+  // const ledger = ledgerModule()
+  // const keepkey = keepkeyModule()
+  // const keystone = keystoneModule()
+  // const gnosis = gnosisModule()
 
-  const trezorOptions = {
-    email: 'test@test.com',
-    appUrl: 'https://www.blocknative.com'
-  }
-  const trezor = trezorModule(trezorOptions)
+  // const trezorOptions = {
+  //   email: 'test@test.com',
+  //   appUrl: 'https://www.blocknative.com'
+  // }
+  // const trezor = trezorModule(trezorOptions)
 
-  const magic = magicModule({
-    apiKey: 'pk_live_02207D744E81C2BA'
-  })
+  // const magic = magicModule({
+  //   apiKey: 'pk_live_02207D744E81C2BA'
+  // })
 
   const onboard = Onboard({
     wallets: [
-      ledger,
-      trezor,
-      walletConnect,
-      keepkey,
-      keystone,
-      walletLink,
+      // ledger,
+      // trezor,
+      // walletConnect,
+      // keepkey,
+      // keystone,
+      // walletLink,
       injected,
-      magic,
-      fortmatic,
-      portis,
-      torus,
-      gnosis
+      // magic,
+      // fortmatic,
+      // portis,
+      // torus,
+      // gnosis
     ],
     chains: [
       {
@@ -123,6 +123,12 @@
         token: 'MATIC',
         label: 'Matic Mainnet',
         rpcUrl: 'https://matic-mainnet.chainstacklabs.com'
+      },
+      {
+        id: '0x13881',
+        token: 'MATIC',
+        label: 'Mumbai Testnet',
+        rpcUrl: 'https://rpc-mumbai.maticvigil.com'
       }
     ],
     appMetadata: {
@@ -162,14 +168,15 @@
     })
   }
 
-  const signMessage = async (provider, address) => {
-    const signature = await provider.request({
-      method: 'eth_sign',
-      params: [address, toHex(signMsg)]
-    })
+  const signMessage = async (wallets$, provider, address, accounts) => {
+    // const signature = await provider.request({
+    //   method: 'eth_sign',
+    //   params: [address, toHex(signMsg)]
+    // })
 
-    const recoveredAddress = verifyMessage(signMsg, signature)
-    console.log({ signMsg, signature, recoveredAddress })
+    // const recoveredAddress = verifyMessage(signMsg, signature)
+    // console.log({ signMsg, signature, recoveredAddress })
+    // console.log(wallets$)
   }
 
   const signTypedMessage = async (provider, address) => {
@@ -183,6 +190,7 @@
     delete types.EIP712Domain
     console.log(verifyTypedData(domain, types, message, signature))
   }
+
 </script>
 
 <style>
@@ -232,6 +240,11 @@
     <button on:click={() => onboard.setChain({ chainId: '0x89' })}
       >Set Chain to Matic</button
     >
+    <button on:click={() => onboard.setChain({ chainId: '0x13881'})}
+      >Set Chain to Mumbai</button
+    >
+    
+
   {/if}
 
   {#if $wallets$}
@@ -268,7 +281,7 @@
               placeholder="Message..."
               bind:value={signMsg}
             />
-            <button on:click={signMessage(provider, address)}>
+            <button on:click={signMessage(provider, address, accounts)}>
               Sign Message
             </button>
           </div>
