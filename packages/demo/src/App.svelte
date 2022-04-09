@@ -10,7 +10,7 @@
   import torusModule from '@web3-onboard/torus'
   import trezorModule from '@web3-onboard/trezor'
   import walletConnectModule from '@web3-onboard/walletconnect'
-  import walletLinkModule from '@web3-onboard/walletlink'
+  import coinbaseModule from '@web3-onboard/coinbase'
   import magicModule from '@web3-onboard/magic'
   import { verifyMessage, verifyTypedData } from 'ethers/lib/utils'
   import { share } from 'rxjs/operators'
@@ -57,7 +57,7 @@
     }
   })
 
-  const walletLink = walletLinkModule()
+  const coinbaseWallet = coinbaseModule()
 
   const walletConnect = walletConnectModule()
   const portis = portisModule({
@@ -91,7 +91,7 @@
       walletConnect,
       keepkey,
       keystone,
-      walletLink,
+      coinbaseWallet,
       injected,
       magic,
       fortmatic,
@@ -103,26 +103,32 @@
       {
         id: '0x1',
         token: 'ETH',
-        label: 'Ethereum Mainnet',
+        label: 'Ethereum',
         rpcUrl: 'https://mainnet.infura.io/v3/ababf9851fd845d0a167825f97eeb12b'
       },
       {
         id: '0x3',
         token: 'tROP',
-        label: 'Ethereum Ropsten Testnet',
+        label: 'Ropsten',
         rpcUrl: 'https://ropsten.infura.io/v3/ababf9851fd845d0a167825f97eeb12b'
       },
       {
         id: '0x4',
         token: 'rETH',
-        label: 'Ethereum Rinkeby Testnet',
+        label: 'Rinkeby',
         rpcUrl: 'https://rinkeby.infura.io/v3/ababf9851fd845d0a167825f97eeb12b'
       },
       {
         id: '0x89',
         token: 'MATIC',
-        label: 'Matic Mainnet',
+        label: 'Polygon',
         rpcUrl: 'https://matic-mainnet.chainstacklabs.com'
+      },
+      {
+        id: '0xa',
+        token: 'OETH',
+        label: 'Optimism',
+        rpcUrl: 'https://mainnet.optimism.io'
       }
     ],
     appMetadata: {
@@ -138,9 +144,17 @@
         version: '1.0.0',
         termsUrl: 'https://www.blocknative.com/terms-conditions',
         privacyUrl: 'https://www.blocknative.com/privacy-policy'
-      }
+      },
+      gettingStartedGuide: 'https://blocknative.com',
+      explore: 'https://blocknative.com'
     }
-    // example customising copy
+    // example customizing account center
+    // accountCenter: {
+    //   desktop: {
+    //     position: 'bottomRight'
+    //   }
+    // }
+    // example customizing copy
     // i18n: {
     //   en: {
     //     connect: {
